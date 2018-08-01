@@ -14,8 +14,8 @@
 NAME		:= devhub
 REPO		:= playnet-public
 GIT_HOST	:= github.com
-REGISTRY	:= eu.gcr.io
-IMAGE		:= playnet-gce/devhub
+REGISTRY	:= quay.io
+IMAGE		:= playnet/devhub
 
 PATH 		:= $(GOPATH)/bin:$(PATH)
 
