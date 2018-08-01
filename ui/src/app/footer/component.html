@@ -1,0 +1,17 @@
+<mat-toolbar class="footer" fxLayout="row" fxLayoutAlign="flex-end center">
+  <div>
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>public</mat-icon> {{ 'language' | translate }}</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="translate.use('de')">Deutsch</button>
+      <button mat-menu-item (click)="translate.use('en')">English</button>
+    </mat-menu>
+  </div>
+  <span fxFlex></span>
+  <p>
+    <a mat-button href="https://play-net.org/imprint" target="_blank" rel="noopener noreferrer">{{ 'imprint' | translate }}</a>
+  </p>
+  <p>
+    <a mat-button href="https://play-net.org/privacy" target="_blank" rel="noopener noreferrer">{{ 'privacyPolicy' | translate }}</a>
+  </p>
+</mat-toolbar>

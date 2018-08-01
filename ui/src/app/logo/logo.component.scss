@@ -1,0 +1,15 @@
+.top-logo {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+
+  img.gsuite-logo {
+    margin-top: 1.25em;
+    width: 5.5em;
+  }
+
+  img.seibert-logo {
+    margin-top: 5px;
+    width: 14em;
+  }
+}

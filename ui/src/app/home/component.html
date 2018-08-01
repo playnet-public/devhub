@@ -1,0 +1,14 @@
+<div class="home" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap.gt-xs="20%">
+  <span fxFlex></span>
+  <mat-card class="card">
+    <mat-card-title>Home</mat-card-title>
+    <mat-card-content>
+      Welcome to the DevHub Project!
+      To contribute, check out the source code on <a class="link" href="https://github.com/playnet-public/devhub" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button [routerLink]="['/login']" color="primary">{{ 'next' | translate }}</button>
+    </mat-card-actions>
+  </mat-card>
+  <span fxFlex></span>
+</div>

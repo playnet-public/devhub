@@ -1,0 +1,20 @@
+<mat-toolbar class="mat-elevation-z2 header" color="primary" fxLayout.lt-sm="column" ngClass.lt-sm="two-rows">
+  <a routerLink="/">
+    <img src="../assets/white_full_faketrans.svg" alt="DevHub" class="logo">
+  </a>
+  <span class="spacer"></span>
+  <div fxLayout="row" fxLayoutGap="1em">
+  <button mat-button (click)="support()">
+    <mat-icon class="icon">help</mat-icon>
+    <span>Support</span>
+  </button>
+  <button *ngIf="!userService.isLoggedIn" (click)="login()" mat-button>
+    <mat-icon class="icon">verified_user</mat-icon>
+    <span>Login</span>
+  </button>
+  <button *ngIf="userService.isLoggedIn" (click)="logout()" mat-button>
+    <mat-icon class="icon">security</mat-icon>
+    <span>Logout</span>
+  </button>
+</div>
+</mat-toolbar>

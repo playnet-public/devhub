@@ -1,0 +1,66 @@
+steps:
+
+# add source info
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: [
+    'debug',
+    'source',
+    'gen-repo-info-file',
+    '--output-directory', 'files']
+
+# install npm deps
+- name: 'gcr.io/cloud-builders/npm'
+  args: ['install', '--prefix', 'ui']
+
+# build ui
+- name: 'gcr.io/cloud-builders/npm'
+  args: ['run-script', 'build', '--prefix', 'ui']
+
+# build frontend image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--no-cache', '--rm=true',
+        '-t', '${_REGISTRY_}/${_IMAGE_}-frontend:${SHORT_SHA}',
+        '-t', '${_REGISTRY_}/${_IMAGE_}-frontend:latest',
+        '-f', 'Dockerfile.frontend', '.']
+
+# push frontend image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'eu.gcr.io/playnet-gce/devhub-frontend']
+
+# build backend image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--no-cache', '--rm=true',
+        '-t', '${_REGISTRY_}/${_IMAGE_}-backend:${SHORT_SHA}',
+        '-t', '${_REGISTRY_}/${_IMAGE_}-backend:latest',
+        '--build-arg', 'VERSION=$(VERSION)',
+        '--build-arg', 'GIT_HOST=${_GIT_HOST_}',
+        '--build-arg', 'REPO=${_REPO_}',
+        '--build-arg', 'NAME=${_NAME_}',
+        '--build-arg', 'COMMAND="buildgo"',
+        '-f', 'Dockerfile.backend', '.']
+
+# push backend image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'eu.gcr.io/playnet-gce/devhub-backend']
+
+# update deployment
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+  - delete
+  - pod
+  - -n
+  - devhub-dev
+  - -l
+  - app=devhub
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-d'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
+images: ['eu.gcr.io/playnet-gce/devhub-frontend', 'eu.gcr.io/playnet-gce/devhub-backend']
+
+# defs
+substitutions:
+  _NAME_: devhub
+  _GIT_HOST_: github.com
+  _REPO_: playnet-public
+  _REGISTRY_: eu.gcr.io
+  _IMAGE_: playnet-gce/devhub

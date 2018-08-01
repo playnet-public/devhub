@@ -1,0 +1,15 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+.footer {
+    height: 52px;
+    padding: 8px;
+    padding: 1em 4em;
+
+    button {
+        mat-icon {
+            line-height: 0.9em;
+        }
+    }
+}

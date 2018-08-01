@@ -1,0 +1,8 @@
+build
+.env
+coverage.out
+*.coverprofile
+client_secret.json
+.credentials
+debug
+source-context.json
