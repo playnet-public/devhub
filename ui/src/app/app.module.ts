@@ -27,7 +27,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './router/router.module';
 
 import { HeaderComponent } from './header/component';
-import { LogoComponent } from './logo/logo.component';
 import { HomeComponent } from './home/component';
 import { FooterComponent } from './footer/component';
 
@@ -58,7 +57,6 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     HeaderComponent,
-    LogoComponent,
     HomeComponent,
     FooterComponent,
   ],

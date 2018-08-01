@@ -11,11 +11,11 @@
 # Parts of this makefile are based upon github.com/kolide/kit
 #
 
-NAME		:= gsuite-trial
-REPO		:= seibert-media
-GIT_HOST	:= bitbucket.org
+NAME		:= devhub
+REPO		:= playnet-public
+GIT_HOST	:= github.com
 REGISTRY	:= eu.gcr.io
-IMAGE		:= smedia-kubernetes/gsuite-trial
+IMAGE		:= playnet-gce/devhub
 
 PATH 		:= $(GOPATH)/bin:$(PATH)
 
