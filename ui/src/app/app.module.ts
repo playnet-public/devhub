@@ -38,7 +38,7 @@ import * as Raven from 'raven-js';
 import { UserService } from './backend/user.service';
 
 Raven
-.config('https://2bf8872573cf42fcb23c4ff15748ebfe@sentry.io/1201201')
+.config('')
 .install();
 
 export class RavenErrorHandler implements ErrorHandler {
