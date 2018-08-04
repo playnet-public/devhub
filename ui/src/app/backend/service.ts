@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 export abstract class BackendService {
 
     apiUrl: string;
-    data: User | Entry;
+    data: User | Entry | Tag | Tag[] | Entry[];
 
     constructor(public http: HttpClient) {}
  

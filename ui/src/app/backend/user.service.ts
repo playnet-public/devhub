@@ -13,34 +13,34 @@ import { BackendService } from './service';
 
 @Injectable()
 export class UserService extends BackendService {
-    
-    apiUrl = environment.apiUrl + '/user';
 
-    public isLoggedIn = false;
-    public data: User;
-    public redirectUrl: string;
+  apiUrl = environment.apiUrl + '/user';
 
-    constructor(
-        http: HttpClient,
-    ) {
-        super(http);
+  public isLoggedIn = false;
+  public data: User;
+  public redirectUrl: string;
+
+  constructor(
+    http: HttpClient,
+  ) {
+    super(http);
+  }
+
+  get(): Observable<User> {
+    if (this.checkLogin('auth') && this.data !== undefined) {
+      console.log('already logged in:', this.data);
+      return Observable.of(this.data);
     }
+    console.log('fetching user from backend:', this.apiUrl);
+    return this.http.get<User>(this.apiUrl, {
+      responseType: "json"
+    })
+      .map(this.parseData)
+      .catch(this.handleError);
+  }
 
-    get(): Observable<User> {
-        if (this.checkLogin('auth') && this.data !== undefined) {
-            console.log('already logged in:', this.data);
-            return Observable.of(this.data);
-        }
-        console.log('fetching user from backend:', this.apiUrl);
-        return this.http.get<User>(this.apiUrl, {
-            responseType: "json"
-        })
-            .map(this.parseData)
-            .catch(this.handleError);
-    }
-
-    public checkLogin(cookieName: string): boolean {
-        this.isLoggedIn = document.cookie.indexOf(cookieName, 0) != -1;
-        return this.isLoggedIn;
-    }
+  public checkLogin(cookieName: string): boolean {
+    this.isLoggedIn = document.cookie.indexOf(cookieName, 0) != -1;
+    return this.isLoggedIn;
+  }
 }

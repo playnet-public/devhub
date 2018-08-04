@@ -1,0 +1,43 @@
+<div class="pages" fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap.gt-xs="2%">
+  <span fxFlex></span>
+  <div class="sidebar-left" *ngIf="activePage == null">
+    <h3 class="tags-header mat-body-2">Tags</h3>
+    <mat-chip-list>
+        <mat-chip *ngFor="let tag of tags.data" (click)="clickTag(tag)"
+        [ngClass]="{activated: tag.id == activeTag}">
+          {{tag.title}}
+        </mat-chip>
+    </mat-chip-list>
+  </div>
+  <div class="pages-list" [ngClass]="{pagesListPreview: activePage != null}">
+    <mat-nav-list>
+      <h3 mat-subheader *ngIf="pages.getByTag('0').length > 0">Featured</h3>
+      <a mat-list-item *ngFor="let page of pages.getByTag('0')" (click)="clickPage(page)"
+      [ngClass]="{activated: page.id == activePage}">
+        <mat-icon mat-list-icon>assistant</mat-icon>
+        <h4 mat-line>{{page.title}}</h4>
+        <p mat-line> {{page.author}} - {{page.updated | date}} </p>
+      </a>
+      <mat-divider *ngIf="pages.getByTag('0').length > 0"></mat-divider>
+      <h3 mat-subheader *ngIf="pages.getByTag('1').length > 0">Tutorials</h3>
+      <a mat-list-item *ngFor="let page of pages.getByTag('1')" (click)="clickPage(page)"
+      [ngClass]="{activated: page.id == activePage}">
+        <mat-icon mat-list-icon>school</mat-icon>
+        <h4 mat-line>{{page.title}}</h4>
+        <p mat-line> {{page.author}} - {{page.updated | date}} </p>
+      </a>
+      <mat-divider *ngIf="pages.getByTag('1').length > 0"></mat-divider>
+      <h3 mat-subheader *ngIf="pages.getByTag('').length > 0">Pages</h3>
+      <a mat-list-item *ngFor="let page of pages.getByTag('')" (click)="clickPage(page)"
+      [ngClass]="{activated: page.id == activePage}">
+        <mat-icon mat-list-icon>{{ pages.getIcon(page) }}</mat-icon>
+        <h4 mat-line>{{page.title}}</h4>
+        <p mat-line> {{page.author}} - {{page.updated | date}} </p>
+      </a>
+    </mat-nav-list>
+  </div>
+  <div class="preview" *ngIf="activePage != null">
+    {{pages.getPage(activePage).content}}
+  </div>
+  <span fxFlex></span>
+</div>

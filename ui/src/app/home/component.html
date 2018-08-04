@@ -3,11 +3,14 @@
   <mat-card class="card">
     <mat-card-title>Home</mat-card-title>
     <mat-card-content>
-      Welcome to the DevHub Project!<br>
-      To contribute, check out the source code on <a class="link" href="https://github.com/playnet-public/devhub" target="_blank" rel="noopener noreferrer">GitHub</a>.
+      Welcome to the DevHub Project!
+      <br> To contribute, check out the source code on
+      <a class="link" href="https://github.com/playnet-public/devhub" target="_blank"
+        rel="noopener noreferrer">GitHub</a>.
     </mat-card-content>
     <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
-      <button mat-raised-button [routerLink]="['/login']" color="primary">{{ 'next' | translate }}</button>
+      <button mat-raised-button [routerLink]="['/pages']" color="primary">
+        <mat-icon class="icon">explore</mat-icon> Explore</button>
     </mat-card-actions>
   </mat-card>
   <span fxFlex></span>

@@ -1,9 +1,19 @@
 interface User {
-    name: string,
-    mail: string,
-    hash: string,
+  name: string,
+  mail: string,
+  hash: string,
 }
 
 interface Entry {
-    id: string,
+  id: string,
+  title: string,
+  author: string,
+  updated: Date,
+  tags: Tag[],
+  content: string,
+}
+
+interface Tag {
+  id: string,
+  title: string,
 }

@@ -1,0 +1,39 @@
+@import '~@angular/material/theming';
+@import 'src/styles/theme';
+
+.sidebar-left {
+  width: 20%;
+
+  .tags-header {
+    margin-top: 0;
+    line-height: 16px;
+  }
+
+  h3 {
+    color: rgba(80, 80, 80, 0.54);
+  }
+
+  mat-chip.activated {
+    background-color: mat-color($app-primary);
+  }
+}
+
+.pages-list {
+  width: 70%;
+
+  mat-nav-list {
+    padding-top: 0;
+  }
+
+  a.activated {
+    background-color: mat-color($app-primary, 100);
+  }
+}
+
+.preview {
+  width: 100%;
+}
+
+.pagesListPreview {
+  width: 30%;
+}

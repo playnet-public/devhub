@@ -20,6 +20,7 @@ import {
   MatToolbarModule,
   MatCardModule,
   MatMenuModule,
+  MatChipsModule,
 } from '@angular/material';
 import 'hammerjs';
 
@@ -36,6 +37,10 @@ import { environment } from '../environments/environment';
 
 import * as Raven from 'raven-js';
 import { UserService } from './backend/user.service';
+import { PagesComponent } from './pages/component';
+import { PageService } from './backend/page.service';
+import { TagService } from './backend/tag.service';
+import { TagsComponent } from './tags/component';
 
 Raven
 .config('')
@@ -58,6 +63,8 @@ export function createTranslateLoader(http: HttpClient) {
     AppComponent,
     HeaderComponent,
     HomeComponent,
+    PagesComponent,
+    TagsComponent,
     FooterComponent,
   ],
   imports: [
@@ -71,6 +78,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatInputModule,
     MatCardModule,
     MatListModule,
+    MatChipsModule,
     MatSelectModule,
     MatOptionModule,
     MatProgressSpinnerModule,
@@ -93,6 +101,8 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   providers: [
     UserService,
+    PageService,
+    TagService,
   ],
   bootstrap: [
     AppComponent,

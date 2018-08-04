@@ -1,0 +1,13 @@
+<div class="tags" fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap.gt-xs="5%">
+  <span fxFlex></span>
+  <div class="tags-list">
+    <mat-nav-list>
+      <h3 mat-subheader>Tags</h3>
+      <mat-list-item *ngFor="let tag of tags.data">
+        <mat-icon mat-list-icon>label</mat-icon>
+        <h4 mat-line>{{tag.title}}</h4>
+      </mat-list-item>
+    </mat-nav-list>
+  </div>
+  <span fxFlex></span>
+</div>
